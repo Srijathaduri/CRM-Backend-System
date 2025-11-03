@@ -20,6 +20,24 @@ app.use(express.json());
 app.use('/api/employees', employeeRoutes);
 app.use('/api/enquiries', enquiryRoutes);
 
+
+// Root route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: '🚀 CRM Backend API is running!',
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      health: '/health',
+      submit_enquiry: 'POST /api/enquiries',
+      public_enquiries: 'GET /api/enquiries/public',
+      private_enquiries: 'GET /api/enquiries/private',
+      claim_enquiry: 'PUT /api/enquiries/:id/claim',
+      register: 'POST /api/employees/register',
+      login: 'POST /api/employees/login'
+    },
+    documentation: 'Check README for API details'
+  });
+}); 
 // Health check
 app.get('/health', (req, res) => {
   res.json({ message: 'CRM Backend is running!' });

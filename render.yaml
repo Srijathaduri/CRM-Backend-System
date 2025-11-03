@@ -10,6 +10,4 @@ services:
         value: production
       - key: JWT_SECRET
         generateValue: true
-      - key: DB_DIALECT
-        value: postgres
-    # Render will automatically inject DATABASE_URL
+    # DATABASE_URL will be automatically injected by Render
